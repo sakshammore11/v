@@ -1,0 +1,2155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="A cinematic, emotionally beautiful anniversary journey of Saksham and Vidhi. Survival of chaos, distance, and choosing love through everything.">
+    <title>Vidhi — Forever Started Here</title>
+    
+    <!-- Premium Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==========================================================================
+           1. DESIGN SYSTEM & CSS VARIABLES
+           ========================================================================== */
+        :root {
+            /* Colors */
+            --bg-color: #07040a;
+            --bg-darker: #040206;
+            --accent-magenta: #ff2a85;
+            --accent-purple: #6e1bf2;
+            --accent-gold: #e5c158;
+            --text-primary: #fcfbfe;
+            --text-secondary: #b5afbe;
+            --text-muted: #786f83;
+            --glass-bg: rgba(13, 8, 19, 0.45);
+            --glass-border: rgba(255, 42, 133, 0.15);
+            --glass-border-gold: rgba(229, 193, 88, 0.15);
+            --neon-glow: 0 0 20px rgba(255, 42, 133, 0.35);
+            --gold-glow: 0 0 20px rgba(229, 193, 88, 0.25);
+            
+            /* Fonts */
+            --font-display: 'Cinzel', serif;
+            --font-editorial: 'Playfair Display', serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+            
+            /* Spacing & Transitions */
+            --transition-fluid: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-bounce: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            --transition-slow: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* ==========================================================================
+           2. GLOBAL STYLES & RESET
+           ========================================================================== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-magenta) var(--bg-color);
+        }
+
+        /* Custom Scrollbar for Luxury Experience */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-darker);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, var(--accent-magenta), var(--accent-purple));
+            border-radius: 10px;
+        }
+
+        body {
+            position: relative;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Selection Color */
+        ::selection {
+            background: var(--accent-magenta);
+            color: #fff;
+        }
+
+        /* ==========================================================================
+           3. FLOATING BG & PARTICLE CANVAS
+           ========================================================================== */
+        #particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .ambient-glow {
+            position: fixed;
+            width: 60vw;
+            height: 60vw;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(110, 27, 242, 0.12) 0%, rgba(0,0,0,0) 70%);
+            z-index: 0;
+            pointer-events: none;
+            filter: blur(80px);
+            animation: pulse-glow 20s infinite alternate ease-in-out;
+        }
+
+        .ambient-glow-1 {
+            top: -20%;
+            left: -10%;
+        }
+
+        .ambient-glow-2 {
+            bottom: -20%;
+            right: -10%;
+            background: radial-gradient(circle, rgba(255, 42, 133, 0.1) 0%, rgba(0,0,0,0) 70%);
+            animation-duration: 25s;
+        }
+
+        @keyframes pulse-glow {
+            0% { transform: scale(1) translate(0, 0); }
+            100% { transform: scale(1.2) translate(10%, 10%); }
+        }
+
+        /* ==========================================================================
+           4. CUSTOM CURSOR (DESKTOP ONLY)
+           ========================================================================== */
+        .custom-cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-gold);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s, background-color 0.3s;
+        }
+
+        .custom-cursor-ring {
+            width: 36px;
+            height: 36px;
+            border: 1.5px solid var(--accent-magenta);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease-out, width 0.3s, height 0.3s, border-color 0.3s, background-color 0.3s;
+        }
+
+        /* Hover states for Cursor */
+        .cursor-hover .custom-cursor-dot {
+            width: 14px;
+            height: 14px;
+            background-color: var(--accent-magenta);
+        }
+
+        .cursor-hover .custom-cursor-ring {
+            width: 56px;
+            height: 56px;
+            border-color: var(--accent-gold);
+            background-color: rgba(255, 42, 133, 0.05);
+        }
+
+        /* ==========================================================================
+           5. LOADING & ENTER STORY SCREEN
+           ========================================================================== */
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: var(--bg-darker);
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 1.5s;
+        }
+
+        .loader-heart-wrapper {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin-bottom: 2rem;
+        }
+
+        .loader-heart {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            color: var(--accent-magenta);
+            text-shadow: var(--neon-glow);
+            animation: loader-heartbeat 1.4s infinite ease-in-out;
+        }
+
+        .loader-ring {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 2px solid rgba(255, 42, 133, 0.05);
+            border-top: 2px solid var(--accent-magenta);
+            border-radius: 50%;
+            animation: spin 2s linear infinite;
+        }
+
+        .loader-text {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            letter-spacing: 0.3em;
+            color: var(--accent-gold);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .loader-progress {
+            font-family: var(--font-body);
+            font-size: 2rem;
+            font-weight: 300;
+            color: var(--text-primary);
+            opacity: 0.9;
+        }
+
+        .enter-btn {
+            background: linear-gradient(135deg, var(--accent-magenta), var(--accent-purple));
+            color: #fff;
+            border: none;
+            padding: 1.2rem 3rem;
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            letter-spacing: 0.25em;
+            border-radius: 50px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--neon-glow);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: var(--transition-bounce), box-shadow 0.3s;
+        }
+
+        .enter-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .enter-btn:hover::before {
+            left: 100%;
+        }
+
+        .enter-btn:hover {
+            box-shadow: 0 0 35px rgba(255, 42, 133, 0.6);
+            transform: translateY(-2px) scale(1.03);
+        }
+
+        .enter-btn.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        @keyframes loader-heartbeat {
+            0%, 100% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.8; }
+            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* ==========================================================================
+           6. AUDIO TOGGLE BUTTON (CINEMATIC PLAYER)
+           ========================================================================== */
+        .audio-player-widget {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 999;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 8px 16px;
+            border-radius: 100px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: var(--transition-fluid);
+        }
+
+        .audio-player-widget:hover {
+            border-color: rgba(255, 42, 133, 0.4);
+            box-shadow: var(--neon-glow);
+        }
+
+        .music-disc {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--accent-magenta), var(--accent-purple));
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            animation: disc-spin 3s linear infinite paused;
+            transition: var(--transition-fluid);
+            color: #fff;
+            font-size: 0.9rem;
+            box-shadow: 0 0 10px rgba(255, 42, 133, 0.3);
+        }
+
+        .music-disc.playing {
+            animation-play-state: running;
+        }
+
+        .music-waves {
+            display: flex;
+            align-items: flex-end;
+            gap: 3px;
+            height: 14px;
+        }
+
+        .music-bar {
+            width: 2px;
+            height: 2px;
+            background-color: var(--accent-gold);
+            border-radius: 2px;
+            animation: music-bounce 1s infinite alternate linear paused;
+        }
+
+        .music-bar:nth-child(2) { animation-delay: 0.2s; }
+        .music-bar:nth-child(3) { animation-delay: 0.4s; }
+        .music-bar:nth-child(4) { animation-delay: 0.1s; }
+
+        .playing .music-bar {
+            animation-play-state: running;
+        }
+
+        .audio-label {
+            font-size: 0.7rem;
+            font-family: var(--font-body);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        @keyframes disc-spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes music-bounce {
+            0% { height: 2px; }
+            100% { height: 14px; }
+        }
+
+        /* ==========================================================================
+           7. MAIN SECTIONS SETUP
+           ========================================================================== */
+        main {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+        }
+
+        section {
+            position: relative;
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 100px 24px;
+            overflow: hidden;
+        }
+
+        .section-container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Section Header Layout */
+        .section-tag {
+            font-family: var(--font-display);
+            color: var(--accent-magenta);
+            font-size: 0.8rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            text-shadow: var(--neon-glow);
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--text-primary);
+            text-align: center;
+            margin-bottom: 3.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .section-title span {
+            font-family: var(--font-editorial);
+            font-style: italic;
+            font-weight: 400;
+            color: var(--accent-gold);
+            text-shadow: var(--gold-glow);
+        }
+
+        /* Premium Media Frame (Ensures 100% Visibility of Photos and Videos) */
+        .premium-media-frame {
+            border-radius: 24px;
+            border: 1px solid var(--glass-border-gold);
+            background: var(--glass-bg);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+            overflow: hidden;
+            padding: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: var(--transition-fluid);
+            width: 100%;
+            height: auto;
+        }
+
+        .premium-media-frame:hover {
+            border-color: var(--accent-magenta);
+            box-shadow: var(--neon-glow);
+        }
+
+        /* Images and videos strictly preserved, natural aspect ratio, 100% visible */
+        .premium-media-frame img,
+        .premium-media-frame video {
+            width: 100%;
+            height: auto;
+            max-height: 550px;
+            object-fit: contain; /* Absolutely guarantees zero clipping or cropping */
+            border-radius: 14px;
+            display: block;
+        }
+
+        /* ==========================================================================
+           8. HERO SECTION (CENTRALIZED PORTRAIT FRAME)
+           ========================================================================== */
+        #hero {
+            min-height: 100vh;
+            padding: 60px 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at center, rgba(110, 27, 242, 0.08) 0%, var(--bg-color) 80%);
+        }
+
+        .hero-layout {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3rem;
+            width: 100%;
+            max-width: 700px;
+            text-align: center;
+        }
+
+        .hero-portrait-container {
+            width: 85%;
+            max-width: 320px;
+        }
+
+        .hero-portrait-frame {
+            padding: 10px;
+            background: rgba(255, 42, 133, 0.03);
+            border: 1.5px solid rgba(229, 193, 88, 0.25);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), var(--gold-glow);
+            transform: rotate(-1.5deg);
+            animation: slow-idle 6s infinite alternate ease-in-out;
+        }
+
+        .hero-portrait-frame img {
+            max-height: 380px;
+        }
+
+        @keyframes slow-idle {
+            0% { transform: rotate(-1.5deg) translateY(0); }
+            100% { transform: rotate(1.5deg) translateY(-10px); }
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(3.5rem, 10vw, 7rem);
+            font-weight: 900;
+            color: var(--text-primary);
+            letter-spacing: 0.12em;
+            line-height: 1;
+            margin-bottom: 1rem;
+            background: linear-gradient(to bottom, #ffffff 30%, #ecd3b6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 25px rgba(255, 42, 133, 0.15));
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-editorial);
+            font-style: italic;
+            font-size: clamp(1rem, 2.5vw, 1.6rem);
+            color: var(--accent-gold);
+            letter-spacing: 0.08em;
+            text-shadow: var(--gold-glow);
+            opacity: 0.95;
+        }
+
+        /* Pulse Scroll Indicator */
+        .scroll-down {
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: var(--transition-fluid);
+        }
+
+        .scroll-down:hover {
+            opacity: 1;
+            transform: translateY(5px);
+        }
+
+        .scroll-down span {
+            font-family: var(--font-body);
+            font-size: 0.65rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .scroll-arrow {
+            width: 20px;
+            height: 20px;
+            border-bottom: 2px solid var(--accent-magenta);
+            border-right: 2px solid var(--accent-magenta);
+            transform: rotate(45deg);
+            animation: arrow-bounce 2s infinite ease-in-out;
+        }
+
+        @keyframes arrow-bounce {
+            0%, 100% { transform: translateY(0) rotate(45deg); opacity: 0.5; }
+            50% { transform: translateY(6px) rotate(45deg); opacity: 1; }
+        }
+
+        /* ==========================================================================
+           9. LOVE TIMER SECTION
+           ========================================================================== */
+        #love-timer-sec {
+            background: linear-gradient(180deg, var(--bg-color) 0%, var(--bg-darker) 100%);
+            position: relative;
+        }
+
+        .timer-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 28px;
+            padding: clamp(2rem, 6vw, 4.5rem) clamp(1.5rem, 4vw, 3rem);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4), var(--neon-glow);
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timer-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--accent-magenta), var(--accent-gold), transparent);
+        }
+
+        .timer-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .timer-unit-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 20px;
+            padding: 1.5rem 0.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: var(--transition-fluid);
+        }
+
+        .timer-unit-box:hover {
+            background: rgba(255, 42, 133, 0.05);
+            border-color: rgba(255, 42, 133, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .timer-value {
+            font-family: var(--font-body);
+            font-weight: 200;
+            font-size: clamp(1.8rem, 5vw, 3.8rem);
+            color: var(--text-primary);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+        }
+
+        .timer-unit-name {
+            font-family: var(--font-display);
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+
+        .timer-subtext {
+            font-family: var(--font-editorial);
+            font-style: italic;
+            font-size: clamp(1.1rem, 2.5vw, 1.8rem);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .timer-subtext span {
+            color: var(--accent-magenta);
+            text-shadow: var(--neon-glow);
+        }
+
+        .timer-paragraph {
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* Pulsing Heart Animation in Timer Card */
+        .pulse-heart-icon {
+            font-size: 2.2rem;
+            color: var(--accent-magenta);
+            animation: heart-beat-pulse 1.2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+            text-shadow: var(--neon-glow);
+            margin-bottom: 2rem;
+            display: inline-block;
+        }
+
+        @keyframes heart-beat-pulse {
+            0% { transform: scale(1); }
+            14% { transform: scale(1.12); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.12); }
+            70% { transform: scale(1); }
+        }
+
+        /* Responsive Timer Grid */
+        @media (max-width: 768px) {
+            .timer-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1rem;
+            }
+            .timer-unit-box:nth-child(4),
+            .timer-unit-box:nth-child(5) {
+                grid-column: span 1.5;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .timer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .timer-unit-box:nth-child(5) {
+                grid-column: span 2;
+            }
+        }
+
+        /* ==========================================================================
+           10. THE REAL STORY SECTION (EDITORIAL LAYOUT)
+           ========================================================================== */
+        #story-sec {
+            background-color: var(--bg-darker);
+            position: relative;
+        }
+
+        .story-editorial {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .story-narrative {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .narrative-title {
+            font-family: var(--font-editorial);
+            font-size: clamp(2rem, 4vw, 3rem);
+            line-height: 1.25;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+        }
+
+        .narrative-title span {
+            color: var(--accent-gold);
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .narrative-paragraph {
+            font-family: var(--font-body);
+            font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+            color: var(--text-secondary);
+            line-height: 1.95;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .narrative-paragraph strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .narrative-highlight {
+            border-left: 3px solid var(--accent-magenta);
+            border-right: 3px solid var(--accent-magenta);
+            padding: 1.5rem;
+            font-family: var(--font-editorial);
+            font-style: italic;
+            font-size: 1.3rem;
+            line-height: 1.65;
+            color: var(--accent-gold);
+            margin: 2.5rem auto;
+            background: linear-gradient(90deg, rgba(255, 42, 133, 0.04), transparent, rgba(255, 42, 133, 0.04));
+            max-width: 650px;
+            border-radius: 12px;
+        }
+
+        /* Dual Portrait Grid under Story - 100% VISIBLE PHOTOS */
+        .story-photos-dual {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3.5rem;
+            width: 100%;
+        }
+
+        @media (max-width: 600px) {
+            .story-photos-dual {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
+        /* ==========================================================================
+           11. CHAPTERS OF US SECTION (PREV. TIMELINE) - NO SPECIFIC ACCUSATIONS/DATES
+           ========================================================================== */
+        #timeline-sec {
+            background-color: var(--bg-color);
+            position: relative;
+        }
+
+        .chapters-container {
+            display: flex;
+            flex-direction: column;
+            gap: 6rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .chapter-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 28px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
+            transition: var(--transition-fluid);
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .chapter-card.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .chapter-card:hover {
+            border-color: var(--accent-gold);
+            box-shadow: 0 25px 50px rgba(255, 42, 133, 0.1);
+        }
+
+        .chapter-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 1.2rem;
+        }
+
+        .chapter-num {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            color: var(--accent-magenta);
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+        }
+
+        .chapter-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.2rem, 3.5vw, 1.7rem);
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: 0.05em;
+        }
+
+        .chapter-body {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.8rem;
+        }
+
+        .chapter-desc {
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* ==========================================================================
+           11B. MEMORY CANVAS (POLAROID COLLAGE OF REMAINING IMAGES) - 100% VISIBLE
+           ========================================================================== */
+        #memory-canvas-sec {
+            background-color: var(--bg-darker);
+            position: relative;
+        }
+
+        .canvas-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 1rem;
+        }
+
+        .canvas-polaroid {
+            background: #ffffff;
+            color: #1a171e;
+            padding: 16px 16px 28px 16px;
+            box-shadow: 0 25px 55px rgba(0, 0, 0, 0.7);
+            border-radius: 4px;
+            transition: var(--transition-fluid);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            transform: rotate(var(--rot));
+        }
+
+        .canvas-polaroid img {
+            width: 100%;
+            height: auto;
+            max-height: 420px;
+            object-fit: contain; /* Zero cropping for complete visual transparency */
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            display: block;
+        }
+
+        .canvas-polaroid-caption {
+            font-family: var(--font-editorial);
+            font-style: italic;
+            font-size: clamp(1.05rem, 2vw, 1.35rem);
+            text-align: center;
+            color: #2b2533;
+            letter-spacing: 0.02em;
+            padding-top: 8px;
+        }
+
+        .canvas-polaroid:hover {
+            transform: rotate(0deg) scale(1.04) translateY(-10px);
+            box-shadow: var(--gold-glow), 0 30px 70px rgba(0, 0, 0, 0.85);
+            z-index: 20;
+        }
+
+        @media (max-width: 768px) {
+            .canvas-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+        }
+
+        /* ==========================================================================
+           11C. THE DEAR VIDEO CONTAINER (THEATER) - 100% VISIBLE
+           ========================================================================== */
+        #theater-sec {
+            background: radial-gradient(circle at center, rgba(110, 27, 242, 0.06) 0%, var(--bg-color) 80%);
+            position: relative;
+        }
+
+        .theater-layout {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .theater-sub {
+            font-family: var(--font-editorial);
+            font-style: italic;
+            font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+            color: var(--accent-gold);
+            margin-bottom: 2.5rem;
+        }
+
+        .theater-video-container {
+            position: relative;
+            width: 100%;
+            background: #000;
+            cursor: pointer;
+        }
+
+        .video-play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.45);
+            backdrop-filter: blur(2px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: var(--transition-fluid);
+            z-index: 5;
+        }
+
+        .video-play-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .play-circle {
+            width: 76px;
+            height: 76px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-magenta), var(--accent-purple));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 1.8rem;
+            box-shadow: var(--neon-glow);
+            transition: var(--transition-bounce);
+        }
+
+        .play-circle svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+            transform: translateX(2px);
+        }
+
+        .video-play-overlay:hover .play-circle {
+            transform: scale(1.15);
+            box-shadow: 0 0 35px var(--accent-magenta);
+        }
+
+        /* ==========================================================================
+           12. "WHY HER?" SECTION (DECK OF LUXURY CARDS)
+           ========================================================================== */
+        #why-her-sec {
+            background: linear-gradient(180deg, var(--bg-color) 0%, var(--bg-darker) 100%);
+            position: relative;
+        }
+
+        .why-cards-deck {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.2rem;
+            margin-top: 1rem;
+        }
+
+        .why-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2.2rem;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            transition: var(--transition-fluid);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(255, 42, 133, 0.08) 0%, transparent 60%);
+            pointer-events: none;
+            transition: var(--transition-fluid);
+        }
+
+        .why-card-icon {
+            font-size: 2rem;
+            color: var(--accent-gold);
+            margin-bottom: 1.5rem;
+            text-shadow: var(--gold-glow);
+            transition: var(--transition-bounce);
+        }
+
+        .why-card-title {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .why-card-desc {
+            font-family: var(--font-body);
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-weight: 300;
+            flex-grow: 1;
+        }
+
+        .why-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 42, 133, 0.35);
+            box-shadow: 0 25px 50px rgba(255, 42, 133, 0.12), var(--neon-glow);
+        }
+
+        .why-card:hover .why-card-icon {
+            transform: scale(1.2) rotate(5deg);
+            color: var(--accent-magenta);
+        }
+
+        .why-card:hover::before {
+            background: radial-gradient(circle at top right, rgba(255, 42, 133, 0.18) 0%, transparent 70%);
+        }
+
+        @media (max-width: 992px) {
+            .why-cards-deck {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.8rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .why-cards-deck {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
+        /* ==========================================================================
+           13. APOLOGY + HOPE SECTION (HEART BEAT CANVAS)
+           ========================================================================== */
+        #apology-sec {
+            background-color: var(--bg-darker);
+            text-align: center;
+            position: relative;
+        }
+
+        .apology-content {
+            max-width: 750px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .heart-beat-svg-container {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 2.5rem auto;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .pulsing-aura {
+            position: absolute;
+            width: 90px;
+            height: 90px;
+            background: radial-gradient(circle, rgba(255, 42, 133, 0.3) 0%, rgba(255, 42, 133, 0) 70%);
+            border-radius: 50%;
+            animation: aura-expand 2s infinite ease-out;
+            pointer-events: none;
+        }
+
+        .heart-svg {
+            width: 70px;
+            height: 70px;
+            fill: var(--accent-magenta);
+            filter: drop-shadow(var(--neon-glow));
+            animation: main-heartbeat 1.2s infinite cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        @keyframes aura-expand {
+            0% { transform: scale(0.6); opacity: 1; }
+            100% { transform: scale(1.6); opacity: 0; }
+        }
+
+        @keyframes main-heartbeat {
+            0%, 100% { transform: scale(1); }
+            20% { transform: scale(1.15); }
+            40% { transform: scale(1.05); }
+            60% { transform: scale(1.2); }
+        }
+
+        .apology-poetry {
+            font-family: var(--font-editorial);
+            font-size: clamp(1.2rem, 3.5vw, 2.2rem);
+            font-style: italic;
+            color: var(--text-primary);
+            line-height: 1.8;
+            margin-bottom: 3rem;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+        }
+
+        .apology-poetry p {
+            margin-bottom: 1.2rem;
+            opacity: 0.95;
+        }
+
+        .apology-poetry span {
+            color: var(--accent-magenta);
+            text-shadow: var(--neon-glow);
+            font-weight: 600;
+        }
+
+        .apology-verdict {
+            font-family: var(--font-display);
+            font-size: clamp(1.4rem, 4vw, 2.6rem);
+            color: var(--accent-gold);
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-shadow: var(--gold-glow);
+            animation: fade-gold 3s infinite alternate ease-in-out;
+        }
+
+        @keyframes fade-gold {
+            0% { opacity: 0.8; filter: brightness(0.9); }
+            100% { opacity: 1; filter: brightness(1.2); }
+        }
+
+        /* ==========================================================================
+           14. FUTURE COUNTDOWN SECTION
+           ========================================================================== */
+        #future-sec {
+            background-color: var(--bg-color);
+            position: relative;
+        }
+
+        .countdown-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border-gold);
+            border-radius: 28px;
+            padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5), var(--gold-glow);
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .countdown-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .countdown-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(229, 193, 88, 0.1);
+            border-radius: 16px;
+            padding: 1.2rem 0.5rem;
+            transition: var(--transition-fluid);
+        }
+
+        .countdown-box:hover {
+            border-color: var(--accent-gold);
+            background: rgba(229, 193, 88, 0.05);
+            transform: scale(1.05);
+        }
+
+        .countdown-val {
+            font-family: var(--font-body);
+            font-size: clamp(1.8rem, 4vw, 3.2rem);
+            font-weight: 200;
+            color: var(--accent-gold);
+            text-shadow: var(--gold-glow);
+            margin-bottom: 0.4rem;
+        }
+
+        .countdown-lbl {
+            font-family: var(--font-display);
+            font-size: 0.6rem;
+            letter-spacing: 0.25em;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+        }
+
+        .future-subtext {
+            font-family: var(--font-editorial);
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 600px) {
+            .countdown-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+        }
+
+        /* ==========================================================================
+           15. FINAL ENDING SECTION
+           ========================================================================== */
+        #ending-sec {
+            min-height: 110vh;
+            background: radial-gradient(circle at center, rgba(13, 8, 19, 0.8) 0%, var(--bg-darker) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-bottom: 120px;
+        }
+
+        .ending-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .ending-poetry {
+            font-family: var(--font-editorial);
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            font-style: italic;
+            font-weight: 400;
+            color: var(--text-primary);
+            line-height: 1.7;
+            margin-bottom: 4rem;
+            opacity: 0.95;
+        }
+
+        .ending-signature {
+            font-family: var(--font-display);
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--accent-magenta);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            text-shadow: var(--neon-glow);
+            margin-bottom: 2rem;
+            animation: slow-float 4s infinite alternate ease-in-out;
+        }
+
+        @keyframes slow-float {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-8px); }
+        }
+
+        .ending-footer {
+            font-family: var(--font-body);
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-top: 5rem;
+        }
+
+        /* ==========================================================================
+           16. MOBILE LAYOUT AND GRAPHICS RESPONSIVENESS
+           ========================================================================== */
+        @media (max-width: 480px) {
+            section {
+                padding: 80px 16px;
+            }
+            .section-title {
+                margin-bottom: 2.5rem;
+            }
+            .custom-cursor-dot, .custom-cursor-ring {
+                display: none !important; /* Hide custom cursor on mobile screen sizes */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Ambient Gradients -->
+    <div class="ambient-glow ambient-glow-1"></div>
+    <div class="ambient-glow ambient-glow-2"></div>
+
+    <!-- Background Particle Canvas -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Custom Cursor Dots -->
+    <div class="custom-cursor-dot" id="cursor-dot"></div>
+    <div class="custom-cursor-ring" id="cursor-ring"></div>
+
+    <!-- Premium Cinematic Loading Screen -->
+    <div id="loader">
+        <div class="loader-heart-wrapper">
+            <div class="loader-ring"></div>
+            <div class="loader-heart">♥</div>
+        </div>
+        <div class="loader-text">Whispering our memories...</div>
+        <div class="loader-progress" id="loader-progress">0%</div>
+        <button class="enter-btn" id="enter-story-btn">Enter Our Story</button>
+    </div>
+
+    <!-- Floating Ambient Audio Widget -->
+    <div class="audio-player-widget">
+        <div class="music-disc" id="music-disc-btn">♫</div>
+        <div class="music-waves">
+            <div class="music-bar"></div>
+            <div class="music-bar"></div>
+            <div class="music-bar"></div>
+            <div class="music-bar"></div>
+        </div>
+        <div class="audio-label">Ambient Synth</div>
+    </div>
+
+    <main>
+        
+        <!-- ==========================================================================
+           HERO SECTION (PORTRAIT HIGHLIGHT)
+           ========================================================================== -->
+        <section id="hero">
+            <div class="hero-layout">
+                <!-- Center Portrait Frame - 100% Fully Visible Image -->
+                <div class="hero-portrait-container">
+                    <div class="premium-media-frame hero-portrait-frame">
+                        <img src="assets/photo1.jpeg" alt="Vidhi & Saksham Start">
+                    </div>
+                </div>
+                
+                <div class="hero-content">
+                    <h1 class="hero-title">Vidhi</h1>
+                    <p class="hero-subtitle">22 July 2025 — Forever Started Here</p>
+                </div>
+                
+                <div class="scroll-down" onclick="document.getElementById('love-timer-sec').scrollIntoView();">
+                    <span>Begin Our Story</span>
+                    <div class="scroll-arrow"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+           LOVE TIMER SECTION
+           ========================================================================== -->
+        <section id="love-timer-sec">
+            <div class="section-container">
+                <div class="timer-card">
+                    <div class="pulse-heart-icon">♥</div>
+                    <div class="timer-subtext">Even after everything… <span>we still stayed.</span></div>
+                    
+                    <!-- Live Dynamic Ticking Count -->
+                    <div class="timer-grid">
+                        <div class="timer-unit-box">
+                            <div class="timer-value" id="timer-years">00</div>
+                            <div class="timer-unit-name">Years</div>
+                        </div>
+                        <div class="timer-unit-box">
+                            <div class="timer-value" id="timer-months">00</div>
+                            <div class="timer-unit-name">Months</div>
+                        </div>
+                        <div class="timer-unit-box">
+                            <div class="timer-value" id="timer-days">00</div>
+                            <div class="timer-unit-name">Days</div>
+                        </div>
+                        <div class="timer-unit-box">
+                            <div class="timer-value" id="timer-hours">00</div>
+                            <div class="timer-unit-name">Hours</div>
+                        </div>
+                        <div class="timer-unit-box">
+                            <div class="timer-value" id="timer-mins">00</div>
+                            <div class="timer-unit-name">Minutes</div>
+                        </div>
+                    </div>
+                    
+                    <p class="timer-paragraph">
+                        Time has drifted, seasons have faded, and we've navigated the quiet spaces between words. 
+                        Every second is a testimony that we chose to stay.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+           THE REAL STORY SECTION
+           ========================================================================== -->
+        <section id="story-sec">
+            <div class="section-container">
+                <div class="section-tag">Editorial</div>
+                <h2 class="section-title">The Real <span>Story</span></h2>
+                
+                <div class="story-editorial">
+                    <div class="story-narrative">
+                        <h3 class="narrative-title">Surviving the <span>beautiful storm</span>.</h3>
+                        <p class="narrative-paragraph">
+                            Our love is not a flawless cinematic fairytale. It was born in laughter, but it survived in 
+                            the absolute chaos. We faced the distance, fought our own shadows, and let <strong>misunderstandings</strong> 
+                            grow in the silences.
+                        </p>
+                        <p class="narrative-paragraph">
+                            Especially in these last 3 months, things grew difficult. Overthinking turned quiet evenings 
+                            into battlefields of the mind. The distance felt heavier, the conversations felt shorter, and the 
+                            emotional fights left scars we didn’t know how to heal.
+                        </p>
+                        
+                        <div class="narrative-highlight">
+                            “But love is not the absence of storm. It is the choice to hold hands through the downpour.”
+                        </div>
+                        
+                        <p class="narrative-paragraph">
+                            Yet, underneath all the noise, the fear, and the doubts—there was always a gravity pulling us 
+                            back. No matter how far we drifted, we kept returning to each other. Because we realized that 
+                            being broken together was infinitely more beautiful than being whole apart.
+                        </p>
+                    </div>
+                    
+                    <!-- Dual Portrait Grid - 100% Fully Visible Images -->
+                    <div class="story-photos-dual">
+                        <div class="premium-media-frame">
+                            <img src="assets/photo2.jpeg" alt="Vidhi & Saksham Chapter">
+                        </div>
+                        <div class="premium-media-frame">
+                            <img src="assets/photo3.jpeg" alt="Vidhi & Saksham Moment">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+           CHAPTERS OF OUR JOURNEY SECTION (PREV. TIMELINE)
+           ========================================================================== */ -->
+        <section id="timeline-sec">
+            <div class="section-container">
+                <div class="section-tag">Chronicle</div>
+                <h2 class="section-title">Chapters of <span>Our Heart</span></h2>
+                
+                <div class="chapters-container">
+                    
+                    <!-- Chapter 1 -->
+                    <div class="chapter-card">
+                        <div class="chapter-header">
+                            <div class="chapter-num">Chapter I</div>
+                            <div class="chapter-title">The Spark</div>
+                        </div>
+                        <div class="chapter-body">
+                            <p class="chapter-desc">
+                                Where forever quietly started. The spark that changed the orbit of our lives forever. A simple hello that rewrote our futures and brought us together into a quiet, beautiful promise.
+                            </p>
+                            <!-- 100% Fully Visible Photo -->
+                            <div class="premium-media-frame">
+                                <img src="assets/photo4.jpeg" alt="Our Beginning Spark">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chapter 2 -->
+                    <div class="chapter-card">
+                        <div class="chapter-header">
+                            <div class="chapter-num">Chapter II</div>
+                            <div class="chapter-title">The Bridge of Whispers</div>
+                        </div>
+                        <div class="chapter-body">
+                            <p class="chapter-desc">
+                                Building bridges over distance. Late night calls, laughing until the birds sang, sharing secrets into glowing screens when the rest of the world slept. Finding comfort in a single voice.
+                            </p>
+                            <!-- 100% Fully Visible Photo -->
+                            <div class="premium-media-frame">
+                                <img src="assets/photo5.jpeg" alt="Late Night Connection">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chapter 3 -->
+                    <div class="chapter-card">
+                        <div class="chapter-header">
+                            <div class="chapter-num">Chapter III</div>
+                            <div class="chapter-title">The Stormy Season</div>
+                        </div>
+                        <div class="chapter-body">
+                            <p class="chapter-desc">
+                                Learning that love is forged in storms. Navigating the quiet spaces, the heavy texts, and the difficult months. When the silence grew loud, yet we still sought to hear each other beneath the fear.
+                            </p>
+                            <!-- 100% Fully Visible Photo -->
+                            <div class="premium-media-frame">
+                                <img src="assets/photo6.jpeg" alt="Navigating the Storm">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chapter 4 -->
+                    <div class="chapter-card">
+                        <div class="chapter-header">
+                            <div class="chapter-num">Chapter IV</div>
+                            <div class="chapter-title">Choosing You</div>
+                        </div>
+                        <div class="chapter-body">
+                            <p class="chapter-desc">
+                                Stripping away the pride, putting down our high shields. Realizing that even in the middle of arguments, we would still choose each other's chaos over anyone else's absolute peace.
+                            </p>
+                            <!-- 100% Fully Visible Photo -->
+                            <div class="premium-media-frame">
+                                <img src="assets/photo7.jpeg" alt="Always Still Choosing Us">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+           MEMORY CANVAS (POLAROID DECK) - 100% FULLY VISIBLE IMAGES
+           ========================================================================== -->
+        <section id="memory-canvas-sec">
+            <div class="section-container">
+                <div class="section-tag">Archive</div>
+                <h2 class="section-title">The Gallery of <span>Us</span></h2>
+                
+                <div class="canvas-grid">
+                    <!-- Polaroid 1 -->
+                    <div class="canvas-polaroid" style="--rot: -3.5deg;">
+                        <img src="assets/photo8.jpeg" alt="Memory Photo 8">
+                        <div class="canvas-polaroid-caption">Your softness is my home.</div>
+                    </div>
+
+                    <!-- Polaroid 2 -->
+                    <div class="canvas-polaroid" style="--rot: 2.8deg;">
+                        <img src="assets/photo9.jpeg" alt="Memory Photo 9">
+                        <div class="canvas-polaroid-caption">In your smile, I find gravity.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+           THE DEAR VIDEO SECTION (THEATER) - 100% FULLY VISIBLE VIDEO
+           ========================================================================== -->
+        <section id="theater-sec">
+            <div class="section-container">
+                <div class="section-tag">Cinematic</div>
+                <h2 class="section-title">Our <span>Anchor</span></h2>
+                
+                <div class="theater-layout">
+                    <p class="theater-sub">
+                        “A single piece of our lives that is forever close to your heart, Vidhi.”
+                    </p>
+                    
+                    <!-- Widescreen Cinematic Media frame for Video - 100% Visible -->
+                    <div class="premium-media-frame theater-video-container">
+                        <video id="story-video" preload="metadata" playsinline>
+                            <source src="assets/video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="video-play-overlay" id="video-overlay">
+                            <div class="play-circle">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+           "WHY HER?" SECTION
+           ========================================================================== -->
+        <section id="why-her-sec">
+            <div class="section-container">
+                <div class="section-tag">Tribute</div>
+                <h2 class="section-title">Why <span>Her?</span></h2>
+                
+                <div class="why-cards-deck">
+                    
+                    <!-- Card 1 -->
+                    <div class="why-card">
+                        <div class="why-card-icon">✧</div>
+                        <h3 class="why-card-title">Her Smile</h3>
+                        <p class="why-card-desc">
+                            The kind of light that slices through my absolute darkest moods. It is the center of gravity that resets my chaotic day into absolute calm.
+                        </p>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="why-card">
+                        <div class="why-card-icon">❦</div>
+                        <h3 class="why-card-title">The Comfort</h3>
+                        <p class="why-card-desc">
+                            Coming home to her is the only shelter I know. An unspoken sanctuary where I can put down my heavy shield and just be.
+                        </p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="why-card">
+                        <div class="why-card-icon">⚙</div>
+                        <h3 class="why-card-title">The Chaos</h3>
+                        <p class="why-card-desc">
+                            Beautifully messy, complex, and wild. Her emotional intensity is the spark that keeps our world revolving, making standard lives look pale.
+                        </p>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="why-card">
+                        <div class="why-card-icon">✦</div>
+                        <h3 class="why-card-title">Her Softness</h3>
+                        <p class="why-card-desc">
+                            A gentle counter-force to my stubbornness. The quiet grace in the way she forgives, and the tenderness in her voice when we finally stop fighting.
+                        </p>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="why-card">
+                        <div class="why-card-icon">❂</div>
+                        <h3 class="why-card-title">Her Presence</h3>
+                        <p class="why-card-desc">
+                            Even when miles keep us physically apart, her presence fills the room. Her aura is woven into every thought I think, and every beat of my chest.
+                        </p>
+                    </div>
+
+                    <!-- Card 6 -->
+                    <div class="why-card">
+                        <div class="why-card-icon">❤</div>
+                        <h3 class="why-card-title">The Way She Stays</h3>
+                        <p class="why-card-desc">
+                            Through the worst arguments, the heavy silences, and the misunderstandings—she never truly packs up. She chooses to fight *for* us, time and time again.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+           APOLOGY + HOPE SECTION
+           ========================================================================== -->
+        <section id="apology-sec">
+            <div class="section-container">
+                <div class="apology-content">
+                    <div class="heart-beat-svg-container">
+                        <div class="pulsing-aura"></div>
+                        <svg class="heart-svg" viewBox="0 0 32 29.6">
+                            <path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2
+                            c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/>
+                        </svg>
+                    </div>
+                    
+                    <div class="apology-poetry">
+                        <p>We hurt each other sometimes.</p>
+                        <p>We misunderstood each other.</p>
+                        <p>But somewhere between the silence and chaos…</p>
+                        <p>there was still <span>us</span>.</p>
+                    </div>
+                    
+                    <div class="apology-verdict">
+                        “I don’t want perfect love. <br>I just want us.”
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+           FUTURE COUNTDOWN SECTION
+           ========================================================================== -->
+        <section id="future-sec">
+            <div class="section-container">
+                <div class="section-tag">Next Chapter</div>
+                <h2 class="section-title">Counting Down to <span>Our Year</span></h2>
+                
+                <div class="countdown-card">
+                    <!-- Live Ticking Countdown to 22 July 2026 -->
+                    <div class="countdown-grid">
+                        <div class="countdown-box">
+                            <div class="countdown-val" id="count-days">00</div>
+                            <div class="countdown-lbl">Days</div>
+                        </div>
+                        <div class="countdown-box">
+                            <div class="countdown-val" id="count-hours">00</div>
+                            <div class="countdown-lbl">Hours</div>
+                        </div>
+                        <div class="countdown-box">
+                            <div class="countdown-val" id="count-mins">00</div>
+                            <div class="countdown-lbl">Mins</div>
+                        </div>
+                        <div class="countdown-box">
+                            <div class="countdown-val" id="count-secs">00</div>
+                            <div class="countdown-lbl">Secs</div>
+                        </div>
+                    </div>
+                    
+                    <div class="future-subtext">
+                        Until our next anniversary — 22 July 2026. A brand new page waiting for us to paint.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+           FINAL ENDING SECTION
+           ========================================================================== -->
+        <section id="ending-sec">
+            <div class="section-container">
+                <div class="ending-content">
+                    <div class="ending-poetry">
+                        “In every version of life,<br>
+                        I think I still find you.”
+                    </div>
+                    
+                    <div class="ending-signature">
+                        — For Vidhi
+                    </div>
+                    
+                    <div class="ending-footer">
+                        Crafted with infinite love by Saksham
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==========================================================================
+       JAVASCRIPT IMMERSIVE INTERACTIONS
+       ========================================================================== -->
+    <script>
+        /* ==========================================================================
+           1. RELATIONSHIP TIMER & COUNTDOWN TIMERS
+           ========================================================================== */
+        const START_DATE = new Date("2025-07-22T00:00:00").getTime();
+        const FUTURE_ANNIVERSARY_DATE = new Date("2026-07-22T00:00:00").getTime();
+
+        function updateClocks() {
+            const nowLive = Date.now();
+
+            // -- A. RELATIONSHIP TIMER (COUNT UP FROM 22 JULY 2025) --
+            let diffUp = nowLive - START_DATE;
+            if (diffUp < 0) diffUp = 0;
+
+            const msInYear = 365.25 * 24 * 60 * 60 * 1000;
+            const msInMonth = 30.44 * 24 * 60 * 60 * 1000;
+            const msInDay = 24 * 60 * 60 * 1000;
+            const msInHour = 60 * 60 * 1000;
+            const msInMin = 60 * 1000;
+
+            const years = Math.floor(diffUp / msInYear);
+            let rem = diffUp % msInYear;
+
+            const months = Math.floor(rem / msInMonth);
+            rem = rem % msInMonth;
+
+            const days = Math.floor(rem / msInDay);
+            rem = rem % msInDay;
+
+            const hours = Math.floor(rem / msInHour);
+            rem = rem % msInHour;
+
+            const mins = Math.floor(rem / msInMin);
+
+            // Render elements
+            document.getElementById('timer-years').textContent = String(years).padStart(2, '0');
+            document.getElementById('timer-months').textContent = String(months).padStart(2, '0');
+            document.getElementById('timer-days').textContent = String(days).padStart(2, '0');
+            document.getElementById('timer-hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('timer-mins').textContent = String(mins).padStart(2, '0');
+
+            // -- B. FUTURE COUNTDOWN (COUNT DOWN TO 22 JULY 2026) --
+            let diffDown = FUTURE_ANNIVERSARY_DATE - nowLive;
+            if (diffDown < 0) diffDown = 0;
+
+            const daysDown = Math.floor(diffDown / msInDay);
+            let remDown = diffDown % msInDay;
+
+            const hoursDown = Math.floor(remDown / msInHour);
+            remDown = remDown % msInHour;
+
+            const minsDown = Math.floor(remDown / msInMin);
+            remDown = remDown % msInMin;
+
+            const secsDown = Math.floor(remDown / 1000);
+
+            // Render elements
+            document.getElementById('count-days').textContent = String(daysDown).padStart(2, '0');
+            document.getElementById('count-hours').textContent = String(hoursDown).padStart(2, '0');
+            document.getElementById('count-mins').textContent = String(minsDown).padStart(2, '0');
+            document.getElementById('count-secs').textContent = String(secsDown).padStart(2, '0');
+        }
+
+        // Ticking frequency
+        setInterval(updateClocks, 1000);
+        updateClocks();
+
+        /* ==========================================================================
+           3. AMBIENT BACKGROUND SYNTHESIZER (WEB AUDIO API)
+           ========================================================================== */
+        let audioCtx = null;
+        let isAudioPlaying = false;
+        let ambientOscInterval = null;
+
+        const synthChords = [
+            [261.63, 329.63, 392.00, 493.88], // Cmaj7 (C4, E4, G4, B4)
+            [349.23, 440.00, 523.25, 659.25], // Fmaj7 (F4, A4, C5, E5)
+            [220.00, 261.63, 329.63, 392.00], // Amin7 (A3, C4, E4, G4)
+            [293.66, 349.23, 440.00, 587.33]  // Dmin7 (D4, F4, A4, D5)
+        ];
+        let currentChordIndex = 0;
+
+        function initAudio() {
+            if (audioCtx) return;
+            const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+            audioCtx = new AudioContextClass();
+        }
+
+        function playSoftNote(freq, startTime, duration, volVal) {
+            if (!audioCtx || audioCtx.state === 'suspended') return;
+
+            const osc = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            const filterNode = audioCtx.createBiquadFilter();
+
+            osc.type = Math.random() > 0.5 ? 'sine' : 'triangle';
+            osc.frequency.setValueAtTime(freq, startTime);
+
+            // Filter configuration to make sound soft & warm
+            filterNode.type = 'lowpass';
+            filterNode.frequency.setValueAtTime(350, startTime);
+            filterNode.frequency.exponentialRampToValueAtTime(100, startTime + duration);
+
+            // Volume Envelope
+            gainNode.gain.setValueAtTime(0, startTime);
+            gainNode.gain.linearRampToValueAtTime(volVal, startTime + 1.2);
+            gainNode.gain.setValueAtTime(volVal, startTime + duration - 2);
+            gainNode.gain.exponentialRampToValueAtTime(0.0001, startTime + duration);
+
+            osc.connect(filterNode);
+            filterNode.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+
+            osc.start(startTime);
+            osc.stop(startTime + duration);
+        }
+
+        function playAmbientChordProgression() {
+            if (!isAudioPlaying) return;
+            initAudio();
+
+            const now = audioCtx.currentTime;
+            const chord = synthChords[currentChordIndex];
+            
+            chord.forEach(noteFreq => {
+                playSoftNote(noteFreq, now + Math.random() * 0.4, 7.5, 0.035);
+            });
+
+            if (Math.random() > 0.3) {
+                const highNotes = [523.25, 587.33, 659.25, 783.99, 880.00, 987.77];
+                const randomNote = highNotes[Math.floor(Math.random() * highNotes.length)];
+                playSoftNote(randomNote, now + 2 + Math.random() * 2, 4.0, 0.015);
+            }
+
+            currentChordIndex = (currentChordIndex + 1) % synthChords.length;
+        }
+
+        function toggleAmbientAudio() {
+            initAudio();
+            const discBtn = document.getElementById('music-disc-btn');
+            const audioWidget = document.querySelector('.audio-player-widget');
+
+            if (!isAudioPlaying) {
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+                isAudioPlaying = true;
+                discBtn.classList.add('playing');
+                audioWidget.classList.add('playing');
+                
+                playAmbientChordProgression();
+                ambientOscInterval = setInterval(playAmbientChordProgression, 8000);
+            } else {
+                isAudioPlaying = false;
+                discBtn.classList.remove('playing');
+                audioWidget.classList.remove('playing');
+                clearInterval(ambientOscInterval);
+            }
+        }
+
+        document.getElementById('music-disc-btn').addEventListener('click', toggleAmbientAudio);
+
+        /* ==========================================================================
+           4. LOADER TIMING & INITIAL TRANSITION
+           ========================================================================== */
+        let loadPercent = 0;
+        const progressEl = document.getElementById('loader-progress');
+        const enterBtn = document.getElementById('enter-story-btn');
+
+        function updateLoader() {
+            const loadInterval = setInterval(() => {
+                loadPercent += Math.floor(Math.random() * 8) + 3;
+                if (loadPercent >= 100) {
+                    loadPercent = 100;
+                    clearInterval(loadInterval);
+                    progressEl.style.display = 'none';
+                    enterBtn.classList.add('visible');
+                }
+                progressEl.textContent = `${loadPercent}%`;
+            }, 100);
+        }
+
+        window.addEventListener('DOMContentLoaded', updateLoader);
+
+        document.getElementById('enter-story-btn').addEventListener('click', () => {
+            const loader = document.getElementById('loader');
+            loader.style.opacity = '0';
+            loader.style.visibility = 'hidden';
+
+            setTimeout(() => {
+                toggleAmbientAudio();
+            }, 600);
+        });
+
+        /* ==========================================================================
+           5. CUSTOM CURSOR PHYSICS (DESKTOP INTERPOLATION)
+           ========================================================================== */
+        const cursorDot = document.getElementById('cursor-dot');
+        const cursorRing = document.getElementById('cursor-ring');
+        
+        let mouseX = -100;
+        let mouseY = -100;
+        let ringX = -100;
+        let ringY = -100;
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            cursorDot.style.left = `${mouseX}px`;
+            cursorDot.style.top = `${mouseY}px`;
+        });
+
+        function animateCursorRing() {
+            const easing = 0.15;
+            
+            ringX += (mouseX - ringX) * easing;
+            ringY += (mouseY - ringY) * easing;
+            
+            cursorRing.style.left = `${ringX}px`;
+            cursorRing.style.top = `${ringY}px`;
+            
+            requestAnimationFrame(animateCursorRing);
+        }
+        requestAnimationFrame(animateCursorRing);
+
+        const hoverables = document.querySelectorAll('button, a, .why-card, .chapter-card, .canvas-polaroid, .timer-card, .music-disc, .scroll-down, .premium-media-frame');
+        hoverables.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                document.body.classList.add('cursor-hover');
+            });
+            item.addEventListener('mouseleave', () => {
+                document.body.classList.remove('cursor-hover');
+            });
+        });
+
+        /* ==========================================================================
+           6. PARALLAX CANVAS & FLOATING COSMIC DUST particles
+           ========================================================================== */
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let particles = [];
+        const maxParticles = 65;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = canvas.height + Math.random() * 100;
+                this.size = Math.random() * 2.5 + 0.5;
+                this.speedY = -(Math.random() * 0.8 + 0.2);
+                this.speedX = (Math.random() - 0.5) * 0.4;
+                this.color = Math.random() > 0.5 ? 'rgba(255, 42, 133, ' + (Math.random() * 0.35 + 0.15) + ')' : 'rgba(229, 193, 88, ' + (Math.random() * 0.25 + 0.1) + ')';
+                this.oscillationSpeed = Math.random() * 0.02 + 0.005;
+                this.oscillationRange = Math.random() * 1.5;
+                this.angle = Math.random() * Math.PI * 2;
+            }
+
+            update() {
+                this.y += this.speedY;
+                this.angle += this.oscillationSpeed;
+                this.x += this.speedX + Math.sin(this.angle) * this.oscillationRange * 0.05;
+
+                if (this.y < -20 || this.x < -20 || this.x > canvas.width + 20) {
+                    this.reset();
+                }
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.shadowBlur = this.size * 3;
+                ctx.shadowColor = this.color;
+                ctx.fill();
+                ctx.shadowBlur = 0;
+            }
+        }
+
+        for (let i = 0; i < maxParticles; i++) {
+            particles.push(new Particle());
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        /* ==========================================================================
+           7. SCROLL-DRIVEN REVEAL ANIMATIONS (INTERSECTION OBSERVER)
+           ========================================================================== */
+        const revealOptions = {
+            threshold: 0.12,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    
+                    if (isAudioPlaying && audioCtx && audioCtx.state === 'running') {
+                        const now = audioCtx.currentTime;
+                        playSoftNote(880.00, now, 1.2, 0.008);
+                    }
+                }
+            });
+        }, revealOptions);
+
+        document.querySelectorAll('.chapter-card').forEach(card => {
+            revealObserver.observe(card);
+        });
+
+        /* ==========================================================================
+           8. CORE ANCHOR VIDEO PLAYER & FULLSCREEN GLASS OVERLAY
+           ========================================================================== */
+        const video = document.getElementById('story-video');
+        const videoOverlay = document.getElementById('video-overlay');
+
+        videoOverlay.addEventListener('click', () => {
+            videoOverlay.classList.add('hidden');
+            video.controls = true;
+            video.play();
+            
+            if (isAudioPlaying) {
+                clearInterval(ambientOscInterval);
+                isAudioPlaying = false;
+                document.getElementById('music-disc-btn').classList.remove('playing');
+                document.querySelector('.audio-player-widget').classList.remove('playing');
+            }
+        });
+
+        video.addEventListener('pause', () => {
+            if (video.ended) {
+                videoOverlay.classList.remove('hidden');
+                video.controls = false;
+            }
+        });
+    </script>
+</body>
+</html>
